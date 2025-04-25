@@ -9,6 +9,7 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleClick() {
+    setWhichModalOpen('signin');
     setIsModalOpen(true);
   }
 
@@ -29,10 +30,10 @@ function Header() {
           </button>
         </div>
       </div>
-      <div className="header__line"></div>
 
       {isModalOpen && whichModalOpen === 'signin' && (
         <LoginModal
+          title="Sign in"
           setIsModalOpen={setIsModalOpen}
           setWhichModalOpen={setWhichModalOpen}
         />

@@ -13,16 +13,14 @@ function Main() {
           </p>
         </div>
         <div className="main__content-search">
-          <div className="main__content-search-container">
-            <input
-              type="text"
-              className="main__content-search-input"
-              placeholder="Enter topic"
-            />
-            <button className="main__content-search-button" type="submit">
-              Search
-            </button>
-          </div>
+          <input
+            type="text"
+            className="main__content-search-input"
+            placeholder="Enter topic"
+          />
+          <button className="main__content-search-button" type="submit">
+            Search
+          </button>
         </div>
       </div>
     </div>

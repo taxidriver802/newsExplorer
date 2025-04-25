@@ -1,25 +1,34 @@
 import './RegisterModal.css';
-
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 
 function RegisterModal({ setIsModalOpen, setWhichModalOpen }) {
-  function handleClick() {
+  function handleSwitchToSignin() {
     setWhichModalOpen('signin');
   }
+
+  function handleRegisterSubmit(event) {
+    event.preventDefault();
+    // Add registration logic here
+    console.log('Register form submitted');
+  }
+
   return (
-    <div className="register">
-      <ModalWithForm title="Sign up" setIsModalOpen={setIsModalOpen} />
+    <ModalWithForm
+      title="Sign up"
+      onSubmit={handleRegisterSubmit}
+      setIsModalOpen={setIsModalOpen}
+    >
       <label htmlFor="email">Email</label>
-      <input type="text" id="email" />
+      <input type="email" id="email" name="email" required />
       <label htmlFor="password">Password</label>
-      <input type="text" id="password" />
+      <input type="password" id="password" name="password" required />
       <label htmlFor="username">Username</label>
-      <input type="text" id="username" />
+      <input type="text" id="username" name="username" required />
       <button type="submit">Sign up</button>
-      <button type="button" onClick={handleClick}>
+      <button type="button" onClick={handleSwitchToSignin}>
         or Sign in
       </button>
-    </div>
+    </ModalWithForm>
   );
 }
 
