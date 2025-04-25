@@ -7,17 +7,22 @@ function Footer() {
         <p className="footer__text">© 2025 NewsExplorer. Powered by News API</p>
         <div className="footer__links">
           <div className="footer__links-words">
-            <button className="footer__button" type="button">
+            <a className="footer__button" href="/">
               Home
-            </button>
-            <button className="footer__button" type="button">
+            </a>
+            <a
+              className="footer__button"
+              href="https://tripleten.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               TripleTen
-            </button>
+            </a>
           </div>
           <div className="footer__links-icons">
             <a
               className="footer__button"
-              href="https://github.com"
+              href="https://github.com/taxidriver802"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -29,7 +34,7 @@ function Footer() {
             </a>
             <a
               className="footer__button"
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/jason-cox-067066237/"
               target="_blank"
               rel="noopener noreferrer"
             >

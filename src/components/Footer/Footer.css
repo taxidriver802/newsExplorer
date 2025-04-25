@@ -25,6 +25,7 @@
   border: none;
   background: transparent;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .footer__links-words {
