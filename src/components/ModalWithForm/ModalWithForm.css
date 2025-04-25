@@ -1,0 +1,6 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  max-width: 430px;
+  max-height: 458px;
+}
