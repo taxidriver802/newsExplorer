@@ -7,6 +7,7 @@ import RegisterModal from '../RegisterModal/RegisterModal';
 function Header() {
   const [whichModalOpen, setWhichModalOpen] = useState('signin');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   function handleClick() {
     setIsModalOpen(true);
   }
@@ -16,12 +17,12 @@ function Header() {
       <div className="header">
         <h1 className="header__title">NewsExplorer</h1>
         <div className="header__buttons">
-          <button type="button" className="header__button-home">
+          <button type="button" className="header__button">
             Home
           </button>
           <button
             type="button"
-            className="header__button-signin"
+            className="header__button header__button-signin"
             onClick={handleClick}
           >
             Sign In

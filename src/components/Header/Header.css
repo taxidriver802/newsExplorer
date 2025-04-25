@@ -1,10 +1,50 @@
 .header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #ccc;
+  align-items: center;
+  color: white;
+  height: 80px;
   padding: 0 104px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: transparent;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header__title {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .header__buttons {
-  margin: auto 0;
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.header__button {
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 49px;
+  height: 24px;
+}
+
+.header__button-signin {
+  border: 1px solid white;
+  border-radius: 100px;
+  width: 176px;
+  height: 48px;
 }
