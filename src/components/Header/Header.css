@@ -29,6 +29,7 @@
 }
 
 .header__button {
+  display: flex;
   font-family: 'Roboto', serif;
   font-weight: 400;
   font-size: 16px;
@@ -43,8 +44,40 @@
 }
 
 .header__button-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid white;
   border-radius: 100px;
   width: 176px;
   height: 48px;
+}
+
+.header__button-signout {
+  padding: 0;
+}
+
+.header__button-loggedin-container {
+  display: flex;
+  flex-direction: row;
+  width: 112px;
+  height: 48px;
+}
+
+.header__button-loggedin {
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 100px;
+  height: 100%;
+  width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.header__user-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  flex-shrink: 0;
 }

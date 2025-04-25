@@ -1,7 +1,7 @@
 import './RegisterModal.css';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 
-function RegisterModal({ setIsModalOpen, setWhichModalOpen }) {
+function RegisterModal({ setIsModalOpen, setWhichModalOpen, setUser }) {
   function handleSwitchToSignin() {
     setWhichModalOpen('signin');
   }
@@ -9,7 +9,13 @@ function RegisterModal({ setIsModalOpen, setWhichModalOpen }) {
   function handleRegisterSubmit(event) {
     event.preventDefault();
     // Add registration logic here
-    console.log('Register form submitted');
+    const userInfo = {
+      email: event.target.email.value,
+      password: event.target.password.value,
+      username: event.target.username.value,
+    };
+    setUser(userInfo);
+    setIsModalOpen(false);
   }
 
   return (

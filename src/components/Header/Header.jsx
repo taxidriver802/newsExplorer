@@ -4,13 +4,17 @@ import './Header.css';
 import LoginModal from '../LoginModal/LoginModal';
 import RegisterModal from '../RegisterModal/RegisterModal';
 
-function Header() {
+function Header({ user, setUser }) {
   const [whichModalOpen, setWhichModalOpen] = useState('signin');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  function handleClick() {
+  function handleSignInClick() {
     setWhichModalOpen('signin');
     setIsModalOpen(true);
+  }
+
+  function handleSignOutClick() {
+    setUser({ email: '', password: '', username: '' });
   }
 
   return (
@@ -21,13 +25,32 @@ function Header() {
           <button type="button" className="header__button">
             Home
           </button>
-          <button
-            type="button"
-            className="header__button header__button-signin"
-            onClick={handleClick}
-          >
-            Sign In
-          </button>
+          {user.username ? (
+            <div className="header__button-loggedin-container">
+              <div className="header__button-loggedin">
+                <button
+                  type="button"
+                  className="header__button header__button-signout"
+                  onClick={handleSignOutClick}
+                >
+                  {user.username}
+                  <img
+                    src="src/assets/icons/Union.svg"
+                    alt="User Icon"
+                    className="header__user-icon"
+                  />
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="header__button header__button-signin"
+              onClick={handleSignInClick}
+            >
+              Sign In
+            </button>
+          )}
         </div>
       </div>
 
@@ -36,12 +59,14 @@ function Header() {
           title="Sign in"
           setIsModalOpen={setIsModalOpen}
           setWhichModalOpen={setWhichModalOpen}
+          setUser={setUser}
         />
       )}
       {isModalOpen && whichModalOpen === 'signup' && (
         <RegisterModal
           setIsModalOpen={setIsModalOpen}
           setWhichModalOpen={setWhichModalOpen}
+          setUser={setUser}
         />
       )}
     </>
