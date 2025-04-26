@@ -10,9 +10,10 @@ import Footer from '../Footer/Footer.jsx';
 
 function App() {
   const [user, setUser] = useState({
-    email: 'ja@co.com' /* Testing : Remove when done */,
-    password: 'qwerty123' /* Testing : Remove when done */,
-    username: 'Jason' /* Testing : Remove when done */,
+    email: '',
+    password: '',
+    username: '',
+    _id: '',
   });
   return (
     <>

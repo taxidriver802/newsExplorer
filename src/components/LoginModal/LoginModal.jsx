@@ -1,18 +1,23 @@
 import './LoginModal.css';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import { signin } from '../../utils/auth.js';
 
-function LoginModal({ setWhichModalOpen, setIsModalOpen }) {
+function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
   function handleSwitchToSignup() {
     setWhichModalOpen('signup');
   }
 
   function handleLoginSubmit(e) {
     e.preventDefault();
-
+    /* set is loading true */
     const email = e.target.email.value;
     const password = e.target.password.value;
-
-    console.log('Login form submitted', email, password);
+    signin(email, password).then((user) => {
+      /* setUser(user); */
+      console.log(user);
+    });
+    /* set is loading false */
+    setIsModalOpen(false);
   }
 
   return (

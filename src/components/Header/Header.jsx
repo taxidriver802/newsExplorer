@@ -57,7 +57,6 @@ function Header({ user, setUser }) {
 
       {isModalOpen && whichModalOpen === 'signin' && (
         <LoginModal
-          title="Sign in"
           setIsModalOpen={setIsModalOpen}
           setWhichModalOpen={setWhichModalOpen}
           setUser={setUser}
