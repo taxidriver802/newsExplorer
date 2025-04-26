@@ -26,22 +26,23 @@ function Header({ user, setUser }) {
             Home
           </button>
           {user.username ? (
-            <div className="header__button-loggedin-container">
-              <div className="header__button-loggedin">
-                <button
-                  type="button"
-                  className="header__button header__button-signout"
-                  onClick={handleSignOutClick}
-                >
-                  {user.username}
-                  <img
-                    src="src/assets/icons/Union.svg"
-                    alt="User Icon"
-                    className="header__user-icon"
-                  />
-                </button>
-              </div>
-            </div>
+            <>
+              <button className="header__button-saved" type="button">
+                Saved articles
+              </button>
+              <button
+                type="button"
+                className="header__button header__button-signout"
+                onClick={handleSignOutClick}
+              >
+                <span className="header__username">{user.username}</span>
+                <img
+                  src="src/assets/icons/Union.svg"
+                  alt="User Icon"
+                  className="header__user-icon"
+                />
+              </button>
+            </>
           ) : (
             <button
               type="button"
