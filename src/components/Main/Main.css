@@ -20,8 +20,8 @@
   position: relative;
   z-index: 2;
   color: white;
-  padding: 160px;
-  width: 608px;
+  padding-top: 160px;
+  max-width: 608px;
   margin: 0 auto;
 }
 
