@@ -1,4 +1,4 @@
-import { BASE_URL } from './constants';
+import { NEWS_API_URL, APIkey } from './constants';
 
 function request(url, options) {
   return fetch(url, options)
@@ -15,5 +15,12 @@ function checkResponse(res) {
         .json()
         .then((err) => Promise.reject(`Error: ${res.status} - ${err.message}`));
 }
+
+export const fetchNews = (keyword) => {
+  const url = `${NEWS_API_URL}?q=${encodeURIComponent(
+    keyword
+  )}&apiKey=${APIkey}`;
+  return request(url);
+};
 
 export { request };

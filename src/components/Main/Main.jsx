@@ -1,6 +1,25 @@
+import { useState } from 'react';
 import './Main.css';
 
+import { fetchNews } from '../../utils/api';
+
 function Main() {
+  const [keyword, setKeyword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const encodedUrl = encodeURIComponent(keyword);
+    console.log(encodedUrl);
+    fetchNews(keyword)
+      .then((data) => {
+        console.log(data);
+        // Handle the fetched data as needed
+      })
+      .catch((error) => {
+        console.error('Error fetching news:', error);
+      });
+  };
+
   return (
     <div className="main">
       <div className="main__overlay"></div>
@@ -12,16 +31,19 @@ function Main() {
             account.
           </p>
         </div>
-        <div className="main__content-search">
+
+        <form className="main__content-search" onSubmit={handleSubmit}>
           <input
             type="text"
             className="main__content-search-input"
             placeholder="Enter topic"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
           />
           <button className="main__content-search-button" type="submit">
             Search
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );
