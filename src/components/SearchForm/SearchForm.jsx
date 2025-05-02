@@ -1,13 +1,29 @@
-import './SearchForm.css';
+import { useState, useEffect } from 'react';
 
-function SearchForm() {
+import './SearchForm.css';
+import SearchFormCard from '../SearchFormCard/SearchFormCard';
+
+function SearchForm({ articles }) {
+  const [showMore, setShowMore] = useState(false);
+
   return (
-    <>
-      <h1 className="search__title">Search results</h1>
-      <button className="search__button-more" type="button">
-        Show more
-      </button>
-    </>
+    <div className="search__results">
+      <h1 className="search__results-title">Search results</h1>
+      <div className="search__results-container">
+        {(showMore ? articles : articles.slice(0, 3)).map((article, index) => (
+          <SearchFormCard key={index} article={article} />
+        ))}
+      </div>
+      <div className="search__results-button-container">
+        <button
+          className="search__results-button-more"
+          type="button"
+          onClick={() => setShowMore(!showMore)}
+        >
+          {showMore ? 'Show less' : 'Show more'}
+        </button>
+      </div>
+    </div>
   );
 }
 

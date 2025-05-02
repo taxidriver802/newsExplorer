@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Header.css';
 
 import LoginModal from '../LoginModal/LoginModal';
@@ -8,6 +8,26 @@ function Header({ user, setUser }) {
   const [whichModalOpen, setWhichModalOpen] = useState('signin');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  useEffect(() => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      fetch('http://localhost:3001/users/me', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+        .then((userData) => {
+          setUser(userData);
+        })
+        .catch((err) => {
+          console.error('Failed to fetch user data:', err);
+          localStorage.removeItem('jwt');
+        });
+    }
+  }, [setUser]);
+
   function handleSignInClick() {
     setWhichModalOpen('signin');
     setIsModalOpen(true);
@@ -15,6 +35,7 @@ function Header({ user, setUser }) {
 
   function handleSignOutClick() {
     setUser({ email: '', password: '', username: '' });
+    localStorage.removeItem('jwt');
   }
 
   return (

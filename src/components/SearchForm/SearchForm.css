@@ -1,0 +1,43 @@
+.search__results {
+  padding: 80px 104px;
+  background-color: #f5f6f7;
+  /* height: 974px; */
+  max-width: 100vw;
+}
+
+.search__results-title {
+  width: 100%;
+  font-family: 'Roboro-slab', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  color: #1a1b22;
+}
+
+.search__results-button-more {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+  width: 288px;
+  height: 64px;
+  border: none;
+  border-radius: 80px;
+  background: white;
+  margin-top: 64px;
+}
+
+.search__results-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__results-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  justify-content: center;
+  align-items: start;
+}
