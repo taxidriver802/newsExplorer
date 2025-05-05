@@ -8,11 +8,17 @@ function signup(email, password, username) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email, password, username }),
-  }).catch((error) =>
-    Promise.reject(`Failed to sign up: ${error.message || error}`)
-  );
+  })
+    .then((response) => {
+      if (!response.token) {
+        throw new Error('Token not returned from signup');
+      }
+      return response;
+    })
+    .catch((error) =>
+      Promise.reject(`Failed to sign up: ${error.message || error}`)
+    );
 }
-
 function signin(email, password) {
   return request(`${BASE_URL}/signin`, {
     method: 'POST',

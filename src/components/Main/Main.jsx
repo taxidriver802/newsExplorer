@@ -4,10 +4,11 @@ import './Main.css';
 import { fetchNews } from '../../utils/api';
 import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
+import SearchFormSave from '../SearchFormSave/SearchFormSave.jsx';
 import About from '../About/About.jsx';
 import Footer from '../Footer/Footer.jsx';
 
-function Main() {
+function Main({ button }) {
   const [keyword, setKeyword] = useState('');
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -68,6 +69,7 @@ function Main() {
       {isLoading && <Preloader />}
 
       {!isLoading && articles.length > 0 && <SearchForm articles={articles} />}
+      {button === 'saved' && <SearchFormSave />}
 
       <About />
       <Footer />

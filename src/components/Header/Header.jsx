@@ -4,12 +4,13 @@ import './Header.css';
 import LoginModal from '../LoginModal/LoginModal';
 import RegisterModal from '../RegisterModal/RegisterModal';
 
-function Header({ user, setUser }) {
+function Header({ user, setUser, button, setButton }) {
   const [whichModalOpen, setWhichModalOpen] = useState('signin');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
+
     if (token) {
       fetch('http://localhost:3001/users/me', {
         method: 'GET',
@@ -48,7 +49,11 @@ function Header({ user, setUser }) {
           </button>
           {user.username ? (
             <>
-              <button className="header__button-saved" type="button">
+              <button
+                className="header__button-saved"
+                type="button"
+                onClick={() => setButton('saved')}
+              >
                 Saved articles
               </button>
               <button

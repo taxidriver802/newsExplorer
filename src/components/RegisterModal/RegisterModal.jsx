@@ -7,18 +7,45 @@ function RegisterModal({ setIsModalOpen, setWhichModalOpen, setUser }) {
     setWhichModalOpen('signin');
   }
 
-  function handleRegisterSubmit(event) {
+  async function handleRegisterSubmit(event) {
     event.preventDefault();
-    /* set is loading true */
+    /* setIsLoading(true);  */
     const userInfo = {
       email: event.target.email.value,
       password: event.target.password.value,
       username: event.target.username.value,
     };
-    setUser(userInfo);
-    signup(userInfo.email, userInfo.password, userInfo.username);
-    /* set is loading false */
-    setIsModalOpen(false);
+
+    try {
+      const { token } = await signup(
+        userInfo.email,
+        userInfo.password,
+        userInfo.username
+      );
+      console.log(token);
+
+      localStorage.setItem('jwt', token);
+
+      const userResponse = await fetch('http://localhost:3001/users/me', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!userResponse.ok) {
+        throw new Error('Failed to fetch user data');
+      }
+
+      const userData = await userResponse.json();
+      setUser(userData);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Registration failed:', error);
+      alert('Failed to register. Please try again.');
+    } finally {
+      /* setIsLoading(false); */
+    }
   }
 
   return (

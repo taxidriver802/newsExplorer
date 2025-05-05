@@ -4,7 +4,7 @@ import { signin } from '../../utils/auth.js';
 import { useState } from 'react';
 
 function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
-  const [isLoading, setIsLoading] = useState(false); // Add loading state
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleSwitchToSignup() {
     setWhichModalOpen('signup');
@@ -12,18 +12,15 @@ function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
 
   async function handleLoginSubmit(e) {
     e.preventDefault();
-    setIsLoading(true); // Set loading to true
+    setIsLoading(true);
     const email = e.target.email.value;
     const password = e.target.password.value;
 
     try {
-      // Call the signin function to get the token
       const { token } = await signin(email, password);
 
-      // Store the token in localStorage
       localStorage.setItem('jwt', token);
 
-      // Fetch user data using the token
       const userResponse = await fetch('http://localhost:3001/users/me', {
         method: 'GET',
         headers: {
@@ -36,13 +33,13 @@ function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
       }
 
       const userData = await userResponse.json();
-      setUser(userData); // Set user data in state
-      setIsModalOpen(false); // Close the modal
+      setUser(userData);
+      setIsModalOpen(false);
     } catch (error) {
       console.error('Login failed:', error);
       alert('Invalid email or password');
     } finally {
-      setIsLoading(false); // Set loading to false
+      setIsLoading(false);
     }
   }
 
@@ -82,7 +79,7 @@ function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
           <button
             className="login__form-button login__form-button-signin"
             type="submit"
-            disabled={isLoading} // Disable button while loading
+            disabled={isLoading}
           >
             {isLoading ? 'Signing in...' : 'Sign in'}
           </button>
