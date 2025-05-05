@@ -15,6 +15,22 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.header_saved {
+  color: black !important;
+  border-bottom: 1px solid #1a1b22 !important;
+}
+
+.header_saved-button {
+  color: black !important;
+  border-color: #1a1b22 !important;
+}
+
+.header_saved-articles {
+  color: black !important;
+  height: 80px !important;
+  border-bottom: 3px solid black !important;
+}
+
 .header__title {
   font-family: 'Roboto Slab', serif;
   font-weight: 700;

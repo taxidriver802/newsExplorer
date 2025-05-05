@@ -69,9 +69,9 @@ function Main({ button }) {
       {isLoading && <Preloader />}
 
       {!isLoading && articles.length > 0 && <SearchForm articles={articles} />}
-      {button === 'saved' && <SearchFormSave />}
 
       <About />
+
       <Footer />
     </>
   );

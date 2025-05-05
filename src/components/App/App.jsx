@@ -4,6 +4,7 @@ import './App.css';
 
 import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
+import SearchFormSave from '../SearchFormSave/SearchFormSave.jsx';
 
 function App() {
   const [user, setUser] = useState({
@@ -21,7 +22,8 @@ function App() {
         setButton={setButton}
         button={button}
       />
-      <Main button={button} />
+      {button !== 'saved' && <Main button={button} />}
+      {button === 'saved' && <SearchFormSave />}
     </>
   );
 }
