@@ -6,6 +6,7 @@
   height: 100%;
   position: relative;
   background-color: #f5f6f7;
+  padding: 50px;
 }
 
 .circle-preloader {

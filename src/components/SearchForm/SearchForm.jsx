@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './SearchForm.css';
 import SearchFormCard from '../SearchFormCard/SearchFormCard';
 
-function SearchForm({ articles }) {
+function SearchForm({ articles, keyword, setUpdateTrigger }) {
   const [showMore, setShowMore] = useState(false);
 
   return (
@@ -11,7 +11,12 @@ function SearchForm({ articles }) {
       <h1 className="search__results-title">Search results</h1>
       <div className="search__results-container">
         {(showMore ? articles : articles.slice(0, 3)).map((article, index) => (
-          <SearchFormCard key={index} article={article} />
+          <SearchFormCard
+            key={index}
+            article={article}
+            keyword={keyword}
+            setUpdateTrigger={setUpdateTrigger}
+          />
         ))}
       </div>
       <div className="search__results-button-container">

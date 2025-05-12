@@ -1,7 +1,7 @@
 .search__form-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   width: 400px;
   height: 576px;
@@ -28,8 +28,8 @@
 
 .form-card-save-container {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 24px;
+  right: 24px;
   width: 40px;
   height: 40px;
   background-color: white;
@@ -39,10 +39,81 @@
   align-items: center;
 }
 
-.form-card-save {
-  background: url(../../assets/icons/bookmark.svg) center / contain no-repeat;
+.form-card-unsave {
+  background: url(../../assets/icons/trash.svg) center / contain no-repeat;
   width: 24px;
   height: 24px;
   border: none;
   cursor: pointer;
+}
+
+.form-card-unsave-confirm {
+  position: absolute;
+  right: 45px;
+  width: 159px;
+  height: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+}
+
+.form-card-unsave-cancel {
+  background: url(../../assets/icons/icons8-close.svg) center / 24px 24px
+    no-repeat;
+  padding: 1px 6px;
+  opacity: 0.5;
+}
+.form-card-unsave-cancel:hover {
+  background: url(../../assets/icons/icons8-close.svg) center / 24px 24px
+    no-repeat !important;
+  opacity: 1;
+}
+
+.form-card-unsave:hover {
+  background: url(../../assets/icons/hovertrash.svg) center / contain no-repeat;
+}
+
+.form-card-keyword-container {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.form-card-keyword {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 8px 22px;
+  margin: 0;
+}
+
+.form-card-text {
+  padding: 0 24px 24px;
+  margin: 0;
+}
+
+.form-card-date {
+  margin: 17px 0 15px;
+}
+
+.form-card-title {
+  margin: 0 0 16px;
+}
+
+.form-card-subtitle {
+  margin: 0 0 18px;
+}
+
+.form-card-source {
+  margin: 0;
 }

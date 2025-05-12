@@ -5,6 +5,7 @@
   align-items: center;
   width: 400px;
   height: 576px;
+  margin-top: 16px;
   background-color: white;
   position: relative;
   border-radius: 16px;
@@ -44,4 +45,33 @@
   height: 24px;
   border: none;
   cursor: pointer;
+}
+
+.form-card-save-y {
+  background: url(../../assets/icons/save-bookmark.svg) center / contain
+    no-repeat !important;
+}
+
+.search__form-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.form-card-auth-message {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 45px;
+  height: 40px;
+  width: 182px;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+.form-card-auth-message-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
 }

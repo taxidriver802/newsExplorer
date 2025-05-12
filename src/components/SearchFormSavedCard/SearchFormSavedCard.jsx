@@ -1,47 +1,69 @@
+import { useState } from 'react';
 import './SearchFormSavedCard.css';
 import { formatDate } from '../../utils/constants';
 
-function SearchFormSavedCard() {
-  const article = {
-    title: 'Sample News Title',
-    description: 'Sample news description goes here.',
-    publishedAt: '2023-10-01T12:00:00Z',
-    urlToImage: 'https://via.placeholder.com/150',
-    sourceName: 'Sample Source',
+function SearchFormSavedCard({ article, handleDeleteArticle }) {
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  const handleUnsaveClick = () => setShowConfirm((prev) => !prev);
+
+  const handleUnsaveConfirm = () => {
+    console.log({ article }, article._id);
+    handleDeleteArticle(article);
+    setShowConfirm(false);
   };
+
+  const {
+    keyword = '',
+    urlToImage,
+    title = 'No News title',
+    description = 'No News Subtitle',
+    publishedAt,
+    sourceName = 'No News source',
+  } = article;
+
+  const displayImage = urlToImage || 'https://via.placeholder.com/150';
+  const imageAlt = title || 'Head image for the news article';
+  const formattedKeyword = keyword.charAt(0).toUpperCase() + keyword.slice(1);
+  const formattedDate = publishedAt
+    ? formatDate(publishedAt)
+    : 'Article release date';
+
   return (
     <div className="search__form-card">
+      <div className="form-card-keyword-container">
+        <p className="form-card-keyword">{formattedKeyword}</p>
+      </div>
+
       <div className="form-card-img-container">
-        <img
-          className="form-card-img"
-          src={
-            article?.urlToImage
-              ? article.urlToImage
-              : 'https://via.placeholder.com/150'
-          }
-          alt={
-            article?.title ? article.title : 'Head image for the news article'
-          }
-        />
+        <img className="form-card-img" src={displayImage} alt={imageAlt} />
+
         <div className="form-card-save-container">
-          <button type="button" className="form-card-save"></button>
+          {showConfirm && (
+            <button
+              className="form-card-unsave-confirm"
+              type="button"
+              onClick={handleUnsaveConfirm}
+            >
+              Remove from saved
+            </button>
+          )}
+
+          <button
+            type="button"
+            className={`form-card-unsave${
+              showConfirm ? ' form-card-unsave-cancel' : ''
+            }`}
+            onClick={handleUnsaveClick}
+          />
         </div>
       </div>
+
       <div className="form-card-text">
-        <p className="form-card-date">
-          {article?.publishedAt
-            ? formatDate(article?.publishedAt)
-            : 'Article release date'}
-        </p>
-        <h2 className="form-card-title">
-          {article?.title ? article.title : 'News title'}
-        </h2>
-        <p className="form-card-subtitle">
-          {article?.description ? article.description : 'News Subtitle'}
-        </p>
-        <p className="form-card-source">
-          {article?.sourceName ? article.sourceName : 'News source'}
-        </p>
+        <p className="form-card-date">{formattedDate}</p>
+        <h2 className="form-card-title">{title}</h2>
+        <p className="form-card-subtitle">{description}</p>
+        <p className="form-card-source">{sourceName}</p>
       </div>
     </div>
   );

@@ -4,11 +4,10 @@ import './Main.css';
 import { fetchNews } from '../../utils/api';
 import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
-import SearchFormSave from '../SearchFormSave/SearchFormSave.jsx';
 import About from '../About/About.jsx';
 import Footer from '../Footer/Footer.jsx';
 
-function Main({ button }) {
+function Main({ setUpdateTrigger, compareArticles }) {
   const [keyword, setKeyword] = useState('');
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +25,8 @@ function Main({ button }) {
           urlToImage: article.urlToImage,
           sourceName: article.source.name,
         }));
-        setArticles(formattedArticles);
+        const updatedArticles = compareArticles(formattedArticles);
+        setArticles(updatedArticles);
       })
       .finally(() => {
         setIsLoading(false);
@@ -68,7 +68,13 @@ function Main({ button }) {
 
       {isLoading && <Preloader />}
 
-      {!isLoading && articles.length > 0 && <SearchForm articles={articles} />}
+      {!isLoading && articles.length > 0 && (
+        <SearchForm
+          articles={articles}
+          keyword={keyword}
+          setUpdateTrigger={setUpdateTrigger}
+        />
+      )}
 
       <About />
 
