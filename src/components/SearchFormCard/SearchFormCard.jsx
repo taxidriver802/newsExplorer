@@ -4,6 +4,7 @@ import { formatDate } from '../../utils/constants';
 
 function SearchFormCard({ article, keyword, setUpdateTrigger }) {
   const [showAuthMessage, setShowAuthMessage] = useState(false);
+  const [isSaved, setIsSaved] = useState(article?.isSaved || false);
 
   async function handleCardSave() {
     const token = localStorage.getItem('jwt');
@@ -35,6 +36,7 @@ function SearchFormCard({ article, keyword, setUpdateTrigger }) {
 
       const savedCard = await response.json();
       setShowAuthMessage(false);
+      setIsSaved(true);
       setUpdateTrigger((prev) => !prev);
     } catch (error) {
       console.error('Error saving card:', error);
@@ -71,9 +73,7 @@ function SearchFormCard({ article, keyword, setUpdateTrigger }) {
             )}
             <button
               type="button"
-              className={`form-card-save ${
-                article?.isSaved ? 'form-card-save-y' : ''
-              }`}
+              className={`form-card-save ${isSaved ? 'form-card-save-y' : ''}`}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
