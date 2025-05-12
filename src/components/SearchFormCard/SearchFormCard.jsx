@@ -34,7 +34,7 @@ function SearchFormCard({ article, keyword, setUpdateTrigger }) {
       }
 
       const savedCard = await response.json();
-      setShowAuthMessage(false); // Hide message if save was successful
+      setShowAuthMessage(false);
       setUpdateTrigger((prev) => !prev);
     } catch (error) {
       console.error('Error saving card:', error);
