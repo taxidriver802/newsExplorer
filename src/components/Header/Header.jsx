@@ -60,15 +60,17 @@ function Header({ user, setUser, setButton, button, setUpdateTrigger }) {
       <div className={`header${isSavedPage ? ' header_saved' : ''}`}>
         <h1 className="header__title">NewsExplorer</h1>
         <div className="header__buttons">
-          <button
-            type="button"
-            className={`header__button${
-              isSavedPage ? ' header_saved-button' : ''
-            }`}
-            onClick={() => setButton('home')}
-          >
-            Home
-          </button>
+          <div className="header__button-home-container">
+            <button
+              type="button"
+              className={`header__button ${
+                button === 'home' ? 'header__button-home' : ''
+              }${isSavedPage ? ' header_saved-button' : ''}`}
+              onClick={() => setButton('home')}
+            >
+              Home
+            </button>
+          </div>
           {user.username ? (
             <>
               <button

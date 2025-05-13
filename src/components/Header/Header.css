@@ -135,3 +135,20 @@
   padding: 0;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .header {
+    height: 66px;
+    padding: 0 40px;
+  }
+  .header__button-home {
+    margin: 20px 5.5px;
+  }
+  .header__button-home-container {
+    border-bottom: 3px solid white;
+  }
+  .header__button-signin {
+    max-width: 152px;
+    height: 40px;
+  }
+}

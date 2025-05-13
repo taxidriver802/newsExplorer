@@ -40,3 +40,13 @@
   justify-content: center;
   align-items: start;
 }
+
+@media (max-width: 768px) {
+  .search__results {
+  }
+  .search__results-button-more {
+    margin: 0;
+  }
+  .search__results-button-container {
+  }
+}

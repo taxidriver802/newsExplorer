@@ -87,6 +87,12 @@
   margin-bottom: 10px;
 }
 
+.login__form-errors-text {
+  list-style-type: none;
+}
+
+
+
 .login__form-error-disable {
   background-color: #e6e8eb !important;
   color: #b6bcbf !important;

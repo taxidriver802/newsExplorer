@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Main.css';
 
 import { fetchNews } from '../../utils/api';
@@ -13,11 +13,12 @@ function Main({ setUpdateTrigger, compareArticles }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
-    setIsLoading(true);
     e.preventDefault();
+
+    setIsLoading(true);
+
     fetchNews(keyword)
       .then((data) => {
-        console.log('Fetched articles:', data);
         const formattedArticles = data.articles.map((article) => ({
           title: article.title,
           description: article.description,
@@ -60,7 +61,11 @@ function Main({ setUpdateTrigger, compareArticles }) {
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
             />
-            <button className="main__content-search-button" type="submit">
+            <button
+              className="main__content-search-button"
+              type="submit"
+              disabled={isLoading || !keyword.trim()}
+            >
               Search
             </button>
           </form>

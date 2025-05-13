@@ -16,6 +16,7 @@ function LoginModal({
       email: '',
       password: '',
     });
+
   function handleSwitchToSignup() {
     setWhichModalOpen('signup');
   }
@@ -62,6 +63,7 @@ function LoginModal({
     >
       <div className="login__form">
         <div className="login__form-inputs">
+          {/* Email Input */}
           <label className="login__form-label" htmlFor="email">
             Email
           </label>
@@ -75,7 +77,13 @@ function LoginModal({
             value={values.email}
             onChange={handleChange}
           />
+          {errors.email && (
+            <p className="login__form-errors login__form-errors-text">
+              {errors.email}
+            </p>
+          )}
 
+          {/* Password Input */}
           <label className="login__form-label" htmlFor="password">
             Password
           </label>
@@ -90,16 +98,12 @@ function LoginModal({
             onChange={handleChange}
             minLength="4"
           />
+          {errors.password && (
+            <p className="login__form-errors login__form-errors-text">
+              {errors.password}
+            </p>
+          )}
         </div>
-        {Object.values(errors).some((e) => e) && (
-          <div className="login__form-errors">
-            <ul>
-              {['email', 'password'].map(
-                (field) => errors[field] && <li key={field}>{errors[field]}</li>
-              )}
-            </ul>
-          </div>
-        )}
 
         <div className="login__form-buttons">
           <button
@@ -107,7 +111,7 @@ function LoginModal({
               !isFormValid ? 'login__form-error-disable' : ''
             }`}
             type="submit"
-            disabled={!isFormValid} 
+            disabled={!isFormValid}
           >
             {isLoading ? 'Signing in...' : 'Sign in'}
           </button>

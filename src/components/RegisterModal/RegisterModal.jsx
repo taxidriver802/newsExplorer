@@ -15,6 +15,7 @@ function RegisterModal({
       password: '',
       username: '',
     });
+
   function handleSwitchToSignin() {
     setWhichModalOpen('signin');
   }
@@ -62,6 +63,7 @@ function RegisterModal({
     >
       <div className="register__form">
         <div className="register__form-inputs">
+          {/* Email Input */}
           <label className="register__form-label" htmlFor="email">
             Email
           </label>
@@ -76,7 +78,13 @@ function RegisterModal({
             onChange={handleChange}
             value={values.email}
           />
+          {errors.email && (
+            <p className="register__form-errors register__form-errors-text">
+              {errors.email}
+            </p>
+          )}
 
+          {/* Password Input */}
           <label className="register__form-label" htmlFor="password">
             Password
           </label>
@@ -88,10 +96,16 @@ function RegisterModal({
             placeholder="Enter password"
             required
             minLength="4"
-            value={values.password}
             onChange={handleChange}
+            value={values.password}
           />
+          {errors.password && (
+            <p className="register__form-errors register__form-errors-text">
+              {errors.password}
+            </p>
+          )}
 
+          {/* Username Input */}
           <label className="register__form-label" htmlFor="username">
             Username
           </label>
@@ -102,20 +116,15 @@ function RegisterModal({
             name="username"
             placeholder="Enter your username"
             required
-            value={values.username}
             onChange={handleChange}
+            value={values.username}
           />
+          {errors.username && (
+            <p className="register__form-errors register__form-errors-text">
+              {errors.username}
+            </p>
+          )}
         </div>
-
-        {Object.values(errors).some((e) => e) && (
-          <div className="register__form-errors">
-            <ul>
-              {['email', 'password', 'username'].map(
-                (field) => errors[field] && <li key={field}>{errors[field]}</li>
-              )}
-            </ul>
-          </div>
-        )}
 
         <button
           className={`register__form-submit ${

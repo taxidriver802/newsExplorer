@@ -50,6 +50,7 @@
   flex-direction: row;
   justify-content: center;
   height: 24px;
+  margin-top: 10px;
 }
 
 .register__form-button-signup {
@@ -83,6 +84,10 @@
   line-height: 100%;
   margin-top: -20px;
   margin-bottom: 10px;
+}
+
+.register__form-errors-text {
+  list-style-type: none;
 }
 
 .register__form-error-disable {
