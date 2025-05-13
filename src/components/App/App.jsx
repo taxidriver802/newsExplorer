@@ -13,7 +13,7 @@ function App({ articles }) {
     username: '',
     _id: '',
   });
-  const [button, setButton] = useState('');
+  const [button, setButton] = useState('home');
   const [savedArticles, setSavedArticles] = useState([]);
   const [updateTrigger, setUpdateTrigger] = useState(false);
 
@@ -24,53 +24,6 @@ function App({ articles }) {
       isSaved: savedUrls.has(article.url),
     }));
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem('jwt');
-
-    if (token) {
-      fetch('http://localhost:3001/users/me', {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => (res.ok ? res.json() : Promise.reject(res)))
-        .then((userData) => {
-          setUser(userData);
-        })
-        .catch((err) => {
-          console.error('Failed to fetch user data:', err);
-          localStorage.removeItem('jwt');
-        });
-    }
-  }, []);
-
-  useEffect(() => {
-    const token = localStorage.getItem('jwt');
-
-    if (token) {
-      fetch('http://localhost:3001/savedCards', {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          } else {
-            throw new Error('Failed to fetch saved articles');
-          }
-        })
-        .then((data) => {
-          setSavedArticles(data);
-        })
-        .catch((err) => {
-          console.error('Error fetching saved articles:', err);
-        });
-    }
-  }, [updateTrigger]);
 
   const handleDeleteArticle = async (article) => {
     const token = localStorage.getItem('jwt');
@@ -100,6 +53,47 @@ function App({ articles }) {
     }
   };
 
+  const fetchUser = async () => {
+    const token = localStorage.getItem('jwt');
+    if (!token) return;
+
+    try {
+      const res = await fetch('http://localhost:3001/users/me', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw res;
+      const userData = await res.json();
+      setUser(userData);
+    } catch (err) {
+      console.error('Failed to fetch user data:', err);
+      localStorage.removeItem('jwt');
+    }
+  };
+
+  const fetchSavedArticles = async () => {
+    const token = localStorage.getItem('jwt');
+    if (!token) return;
+
+    try {
+      const res = await fetch('http://localhost:3001/savedCards', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw new Error('Failed to fetch saved articles');
+      const data = await res.json();
+      setSavedArticles(data);
+    } catch (err) {
+      console.error('Error fetching saved articles:', err);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    fetchSavedArticles();
+  }, [updateTrigger]);
+
   return (
     <>
       <Header
@@ -107,6 +101,7 @@ function App({ articles }) {
         setUser={setUser}
         setButton={setButton}
         button={button}
+        setUpdateTrigger={setUpdateTrigger}
       />
       {button !== 'saved' && (
         <Main

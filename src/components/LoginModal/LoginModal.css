@@ -71,3 +71,24 @@
   font-size: 14px;
   line-height: 100%;
 }
+
+.login__form-input:invalid,
+.login__form-input.error {
+  border: 1px solid red;
+}
+
+.login__form-errors {
+  color: red;
+  font-family: 'Inter', serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
+
+.login__form-error-disable {
+  background-color: #e6e8eb !important;
+  color: #b6bcbf !important;
+  border: none !important;
+}

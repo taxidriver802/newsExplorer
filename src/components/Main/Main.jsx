@@ -17,6 +17,7 @@ function Main({ setUpdateTrigger, compareArticles }) {
     e.preventDefault();
     fetchNews(keyword)
       .then((data) => {
+        console.log('Fetched articles:', data);
         const formattedArticles = data.articles.map((article) => ({
           title: article.title,
           description: article.description,

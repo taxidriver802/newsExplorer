@@ -1,11 +1,21 @@
 import './LoginModal.css';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import useFormValidation from '../../utils/FormValidator';
 import { signin } from '../../utils/auth.js';
-import { useState } from 'react';
 
-function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
-  const [isLoading, setIsLoading] = useState(false);
-
+function LoginModal({
+  setWhichModalOpen,
+  setIsModalOpen,
+  setUser,
+  setIsLoading,
+  isLoading,
+  setUpdateTrigger,
+}) {
+  const { values, errors, isFormValid, handleChange, resetForm } =
+    useFormValidation({
+      email: '',
+      password: '',
+    });
   function handleSwitchToSignup() {
     setWhichModalOpen('signup');
   }
@@ -34,6 +44,7 @@ function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
 
       const userData = await userResponse.json();
       setUser(userData);
+      setUpdateTrigger((prev) => !prev);
       setIsModalOpen(false);
     } catch (error) {
       console.error('Login failed:', error);
@@ -61,6 +72,8 @@ function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
             name="email"
             placeholder="Enter email"
             required
+            value={values.email}
+            onChange={handleChange}
           />
 
           <label className="login__form-label" htmlFor="password">
@@ -73,13 +86,28 @@ function LoginModal({ setWhichModalOpen, setIsModalOpen, setUser }) {
             name="password"
             placeholder="Enter password"
             required
+            value={values.password}
+            onChange={handleChange}
+            minLength="4"
           />
         </div>
+        {Object.values(errors).some((e) => e) && (
+          <div className="login__form-errors">
+            <ul>
+              {['email', 'password'].map(
+                (field) => errors[field] && <li key={field}>{errors[field]}</li>
+              )}
+            </ul>
+          </div>
+        )}
+
         <div className="login__form-buttons">
           <button
-            className="login__form-button login__form-button-signin"
+            className={`login__form-button-signin ${
+              !isFormValid ? 'login__form-error-disable' : ''
+            }`}
             type="submit"
-            disabled={isLoading}
+            disabled={!isFormValid} 
           >
             {isLoading ? 'Signing in...' : 'Sign in'}
           </button>

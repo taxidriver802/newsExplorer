@@ -18,7 +18,7 @@ function ModalWithForm({ title, children, onSubmit, setIsModalOpen }) {
     return () => {
       document.removeEventListener('keydown', handleEscPress);
     };
-  }, []);
+  });
 
   return (
     <div className="modal">

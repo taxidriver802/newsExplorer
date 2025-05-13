@@ -8,7 +8,6 @@ function SearchFormSavedCard({ article, handleDeleteArticle }) {
   const handleUnsaveClick = () => setShowConfirm((prev) => !prev);
 
   const handleUnsaveConfirm = () => {
-    console.log({ article }, article._id);
     handleDeleteArticle(article);
     setShowConfirm(false);
   };

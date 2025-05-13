@@ -1,28 +1,36 @@
 import './RegisterModal.css';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import useFormValidation from '../../utils/FormValidator';
 import { signup } from '../../utils/auth';
 
-function RegisterModal({ setIsModalOpen, setWhichModalOpen, setUser }) {
+function RegisterModal({
+  setIsModalOpen,
+  setWhichModalOpen,
+  setIsLoading,
+  isLoading,
+}) {
+  const { values, errors, isFormValid, handleChange, resetForm } =
+    useFormValidation({
+      email: '',
+      password: '',
+      username: '',
+    });
   function handleSwitchToSignin() {
     setWhichModalOpen('signin');
   }
 
   async function handleRegisterSubmit(event) {
     event.preventDefault();
-    /* setIsLoading(true);  */
-    const userInfo = {
-      email: event.target.email.value,
-      password: event.target.password.value,
-      username: event.target.username.value,
-    };
+    if (!isFormValid) return;
+
+    setIsLoading(true);
 
     try {
       const { token } = await signup(
-        userInfo.email,
-        userInfo.password,
-        userInfo.username
+        values.email,
+        values.password,
+        values.username
       );
-      console.log(token);
 
       localStorage.setItem('jwt', token);
 
@@ -36,15 +44,13 @@ function RegisterModal({ setIsModalOpen, setWhichModalOpen, setUser }) {
       if (!userResponse.ok) {
         throw new Error('Failed to fetch user data');
       }
-
-      const userData = await userResponse.json();
-      setUser(userData);
-      setIsModalOpen(false);
+      setWhichModalOpen('registerSuccess');
+      resetForm();
     } catch (error) {
       console.error('Registration failed:', error);
       alert('Failed to register. Please try again.');
     } finally {
-      /* setIsLoading(false); */
+      setIsLoading(false);
     }
   }
 
@@ -60,12 +66,15 @@ function RegisterModal({ setIsModalOpen, setWhichModalOpen, setUser }) {
             Email
           </label>
           <input
+            autoFocus
             className="register__form-input"
             type="email"
             id="email"
             name="email"
             placeholder="Enter email"
             required
+            onChange={handleChange}
+            value={values.email}
           />
 
           <label className="register__form-label" htmlFor="password">
@@ -78,6 +87,9 @@ function RegisterModal({ setIsModalOpen, setWhichModalOpen, setUser }) {
             name="password"
             placeholder="Enter password"
             required
+            minLength="4"
+            value={values.password}
+            onChange={handleChange}
           />
 
           <label className="register__form-label" htmlFor="username">
@@ -90,10 +102,29 @@ function RegisterModal({ setIsModalOpen, setWhichModalOpen, setUser }) {
             name="username"
             placeholder="Enter your username"
             required
+            value={values.username}
+            onChange={handleChange}
           />
         </div>
-        <button className="register__form-submit" type="submit">
-          Sign up
+
+        {Object.values(errors).some((e) => e) && (
+          <div className="register__form-errors">
+            <ul>
+              {['email', 'password', 'username'].map(
+                (field) => errors[field] && <li key={field}>{errors[field]}</li>
+              )}
+            </ul>
+          </div>
+        )}
+
+        <button
+          className={`register__form-submit ${
+            !isFormValid ? 'register__form-error-disable' : ''
+          }`}
+          type="submit"
+          disabled={!isFormValid || isLoading}
+        >
+          {isLoading ? 'Signing up...' : 'Sign up'}
         </button>
         <div className="register__form-button-switch">
           <h3 className="register__form-or">or</h3>
