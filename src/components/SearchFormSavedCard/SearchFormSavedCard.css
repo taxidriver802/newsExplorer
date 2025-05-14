@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 400px;
-  height: 576px;
+  max-width: 400px;
+  max-height: 576px;
   background-color: white;
   position: relative;
   border: 1px solid #e0e0e0;
@@ -26,7 +26,7 @@
   object-fit: cover;
 }
 
-.form-card-save-container {
+.form-card-unsave-container {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -59,6 +59,7 @@
   border-radius: 10px;
   border: none;
   background-color: white;
+  z-index: 2;
 }
 
 .form-card-unsave-cancel {
@@ -91,6 +92,7 @@
 
 .form-card-keyword {
   font-family: 'Roboto', sans-serif;
+  font-weight: 500;
   font-size: 14px;
   line-height: 24px;
   padding: 8px 22px;
@@ -116,4 +118,23 @@
 
 .form-card-source {
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .form-card-keyword {
+    padding: 8px 20px;
+  }
+  .form-card-keyword-container {
+    top: 8px;
+    left: 8px;
+  }
+  .form-card-unsave-container {
+    top: 8px;
+    right: 8px;
+  }
+  .form-card-unsave-confirm {
+    left: 0px;
+    top: 0px;
+    padding: 0;
+  }
 }

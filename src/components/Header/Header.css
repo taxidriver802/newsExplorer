@@ -27,7 +27,8 @@
 
 .header_saved-articles {
   color: black !important;
-  height: 80px !important;
+  height: 66px !important;
+  padding: 0 !important;
   border-bottom: 3px solid black !important;
 }
 
@@ -141,6 +142,7 @@
     height: 66px;
     padding: 0 40px;
   }
+
   .header__button-home {
     margin: 20px 5.5px;
   }

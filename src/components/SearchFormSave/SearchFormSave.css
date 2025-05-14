@@ -1,8 +1,6 @@
 .search__form-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
 }
 
 .search__form_save-header {
@@ -50,7 +48,6 @@
   gap: 20px;
   padding: 46px 80px;
   background-color: #f5f5f5;
-  min-height: 55vh;
 }
 
 .search__form-empty {
@@ -70,4 +67,17 @@
   background: url('../../assets/icons/notSaved.png') center / contain no-repeat;
   width: 100px;
   height: 100px;
+}
+
+@media (max-width: 768px) {
+  .search__form-container {
+  }
+  .search__form_saved_card-container {
+    padding: 46px 20px;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+  .search__form_save-text {
+    padding: 0 40px;
+  }
 }

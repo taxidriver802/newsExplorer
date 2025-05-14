@@ -31,23 +31,23 @@ function SearchFormSavedCard({ article, handleDeleteArticle }) {
   return (
     <div className="search__form-card">
       <div className="form-card-keyword-container">
-        <p className="form-card-keyword">{formattedKeyword}</p>
+        {showConfirm ? (
+          <button
+            className="form-card-unsave-confirm"
+            type="button"
+            onClick={handleUnsaveConfirm}
+          >
+            Remove from saved
+          </button>
+        ) : (
+          <p className="form-card-keyword">{formattedKeyword}</p>
+        )}
       </div>
 
       <div className="form-card-img-container">
         <img className="form-card-img" src={displayImage} alt={imageAlt} />
 
-        <div className="form-card-save-container">
-          {showConfirm && (
-            <button
-              className="form-card-unsave-confirm"
-              type="button"
-              onClick={handleUnsaveConfirm}
-            >
-              Remove from saved
-            </button>
-          )}
-
+        <div className="form-card-unsave-container">
           <button
             type="button"
             className={`form-card-unsave${
