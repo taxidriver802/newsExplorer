@@ -70,8 +70,6 @@
 }
 
 @media (max-width: 768px) {
-  .search__form-container {
-  }
   .search__form_saved_card-container {
     padding: 46px 20px;
     gap: 8px;
