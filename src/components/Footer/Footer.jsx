@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer__container">
-        <p className="footer__text">© 2025 NewsExplorer. Powered by News API</p>
+        <p className="footer__text">© 2025 NewsExplorer, Powered by News API</p>
         <div className="footer__links">
           <div className="footer__links-words">
             <a className="footer__button" href="/">

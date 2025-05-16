@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Main.css';
 
 import { fetchNews } from '../../utils/api';
@@ -81,10 +81,11 @@ function Main({ setUpdateTrigger, compareArticles }) {
           setUpdateTrigger={setUpdateTrigger}
         />
       )}
+      <div className="main__closer">
+        <About />
 
-      <About />
-
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }

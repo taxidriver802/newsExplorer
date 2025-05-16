@@ -84,3 +84,42 @@
   align-items: center;
   margin-top: 32px;
 }
+
+@media (max-width: 320px) {
+  .main__content {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 122px;
+  }
+  .main__content-text {
+    max-width: 285px;
+    margin: 0 auto;
+  }
+  .main__content-title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+  .main__content-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 288px;
+    height: 128px;
+  }
+  .main__content-search-button {
+    position: relative;
+    transform: translateX(0);
+    height: 56px;
+    width: 100%;
+  }
+  .main__content-search-input {
+    height: 56px;
+  }
+  .main__closer {
+  }
+}

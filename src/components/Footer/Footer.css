@@ -1,6 +1,5 @@
 .footer {
   padding: 0 104px;
-
   font-weight: 400;
 }
 
@@ -38,6 +37,16 @@
   gap: 24px;
 }
 
+.footer__linkedin-logo {
+  width: 100%;
+  height: 100%;
+}
+
+.footer__github-logo {
+  width: 100%;
+  height: 100%;
+}
+
 .footer__text {
   font-family: 'Roboto', serif;
   font-size: 16px;
@@ -61,5 +70,29 @@
     font-size: 15px;
     line-height: 22px;
     letter-spacing: 0px;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer {
+    padding: 0 16px;
+  }
+  .footer__links {
+    width: 100%;
+    justify-content: space-between;
+    align-items: start;
+  }
+  .footer__container {
+    flex-direction: column-reverse;
+    gap: 38px;
+    height: 176px;
+    padding-bottom: 22px;
+  }
+  .footer__links-words {
+    flex-direction: column;
+  }
+  .footer__button {
+    width: 24px;
+    height: 24px;
   }
 }

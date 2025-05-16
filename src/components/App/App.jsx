@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 
 import Header from '../Header/Header.jsx';
+import HeaderMenu from '../HeaderMenu/HeaderMenu.jsx';
 import Main from '../Main/Main.jsx';
 import SearchFormSave from '../SearchFormSave/SearchFormSave.jsx';
 
@@ -16,6 +17,9 @@ function App({ articles }) {
   const [button, setButton] = useState('home');
   const [savedArticles, setSavedArticles] = useState([]);
   const [updateTrigger, setUpdateTrigger] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [whichModalOpen, setWhichModalOpen] = useState('signin');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const compareArticles = (fetchedArticles) => {
     const savedUrls = new Set(savedArticles.map((article) => article.url));
@@ -86,6 +90,19 @@ function App({ articles }) {
     }
   };
 
+  function handleSignInClick() {
+    setWhichModalOpen('signin');
+    setIsModalOpen(true);
+    setIsDropdownOpen(false);
+  }
+
+  function handleSignOutClick() {
+    setUser({ email: '', password: '', username: '' });
+    localStorage.removeItem('jwt');
+    setButton('home');
+    setIsDropdownOpen(false);
+  }
+
   useEffect(() => {
     fetchUser();
   }, []);
@@ -96,13 +113,35 @@ function App({ articles }) {
 
   return (
     <>
+      {isDropdownOpen && (
+        <div className="app__header_menu">
+          <HeaderMenu
+            user={user}
+            button={button}
+            setButton={setButton}
+            handleSignInClick={handleSignInClick}
+            handleSignOutClick={handleSignOutClick}
+            setIsDropdownOpen={setIsDropdownOpen}
+          />
+        </div>
+      )}
+
       <Header
         user={user}
         setUser={setUser}
         setButton={setButton}
         button={button}
         setUpdateTrigger={setUpdateTrigger}
+        setIsDropdownOpen={setIsDropdownOpen}
+        isDropdownOpen={isDropdownOpen}
+        handleSignInClick={handleSignInClick}
+        handleSignOutClick={handleSignOutClick}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        whichModalOpen={whichModalOpen}
+        setWhichModalOpen={setWhichModalOpen}
       />
+
       {button !== 'saved' && (
         <Main
           button={button}

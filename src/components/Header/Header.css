@@ -37,6 +37,7 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+  letter-spacing: 0;
 }
 
 .header__username {
@@ -137,6 +138,27 @@
   cursor: pointer;
 }
 
+.header__menu-open {
+  position: fixed !important;
+}
+
+.header__menu-icon {
+  background: url('../../assets/icons/menu.svg') center no-repeat;
+  border: none;
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-left: 16px;
+  padding: 0;
+}
+
+.header__menu-icon_active {
+  background: url('../../assets/icons/close.svg') center no-repeat !important;
+  width: 19px;
+  height: 19px;
+}
+
 @media (max-width: 768px) {
   .header {
     height: 66px;
@@ -152,5 +174,22 @@
   .header__button-signin {
     max-width: 152px;
     height: 40px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header {
+    height: 56px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .header__title {
+    font-size: 16px;
+  }
+  .header__menu-icon {
+    display: flex;
+  }
+  .header__buttons {
+    display: none;
   }
 }
