@@ -1,0 +1,125 @@
+.main {
+  background: url(../../assets/images/main__background.jpg) no-repeat
+    center/cover;
+  position: relative;
+  width: 100%;
+  height: 576px;
+}
+
+.main__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.main__content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding-top: 160px;
+  max-width: 608px;
+  margin: 0 auto;
+}
+
+.main__content-title {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  margin: 0 0 32px;
+}
+
+.main__content-subtitle {
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.main__content-search {
+  display: flex;
+  max-width: 608px;
+  height: 64px;
+}
+
+.main__content-search-input {
+  width: 100%;
+  height: 100%;
+  padding-left: 24px;
+  padding-right: 80px;
+  font-size: 16px;
+  border: 1px solid #d1d2d6;
+  border-radius: 100px;
+  box-sizing: border-box;
+}
+
+.main__content-search-input::placeholder {
+  color: #b6bcbf;
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.main__content-search-button {
+  transform: translateX(440px);
+  position: absolute;
+  height: 64px;
+  width: 168px;
+  color: white;
+  background-color: #2f71e5;
+  border: none;
+  border-radius: 100px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.main__search-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+@media (max-width: 320px) {
+  .main__content {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 122px;
+  }
+  .main__content-text {
+    max-width: 285px;
+    margin: 0 auto;
+  }
+  .main__content-title {
+    font-size: 36px;
+    line-height: 40px;
+    margin-bottom: 16px;
+  }
+  .main__content-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 288px;
+    height: 128px;
+  }
+  .main__content-search-button {
+    position: relative;
+    transform: translateX(0);
+    height: 56px;
+    width: 100%;
+  }
+  .main__content-search-input {
+    height: 56px;
+  }
+  .main__closer {
+  }
+}

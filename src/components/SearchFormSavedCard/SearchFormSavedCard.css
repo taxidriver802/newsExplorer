@@ -1,0 +1,140 @@
+.search__form-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 400px;
+  max-height: 576px;
+  background-color: white;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.form-card-img-container {
+  position: relative;
+  width: 400px;
+  height: 272px;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+}
+
+.form-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-card-unsave-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-card-unsave {
+  background: url(../../assets/icons/trash.svg) center / contain no-repeat;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.form-card-unsave-confirm {
+  position: absolute;
+  right: 45px;
+  width: 159px;
+  height: 40px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  z-index: 2;
+}
+
+.form-card-unsave-cancel {
+  background: url(../../assets/icons/icons8-close.svg) center / 24px 24px
+    no-repeat;
+  padding: 1px 6px;
+  opacity: 0.5;
+}
+.form-card-unsave-cancel:hover {
+  background: url(../../assets/icons/icons8-close.svg) center / 24px 24px
+    no-repeat !important;
+  opacity: 1;
+}
+
+.form-card-unsave:hover {
+  background: url(../../assets/icons/hovertrash.svg) center / contain no-repeat;
+}
+
+.form-card-keyword-container {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.form-card-keyword {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 8px 22px;
+  margin: 0;
+}
+
+.form-card-text {
+  padding: 0 24px 24px;
+  margin: 0;
+}
+
+.form-card-date {
+  margin: 17px 0 15px;
+}
+
+.form-card-title {
+  margin: 0 0 16px;
+}
+
+.form-card-subtitle {
+  margin: 0 0 18px;
+}
+
+.form-card-source {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .form-card-keyword {
+    padding: 8px 20px;
+  }
+  .form-card-keyword-container {
+    top: 8px;
+    left: 8px;
+  }
+  .form-card-unsave-container {
+    top: 8px;
+    right: 8px;
+  }
+  .form-card-unsave-confirm {
+    left: 0px;
+    top: 0px;
+    padding: 0;
+  }
+}

@@ -1,0 +1,10 @@
+.register-success-btn {
+  margin-top: 30px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: #2f71e5;
+  border: none;
+  background-color: white;
+}
