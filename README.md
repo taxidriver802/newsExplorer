@@ -14,22 +14,22 @@ News Explorer is a web application that allows users to search for news articles
 
 5. Responsive design for desktop and mobile
 
-# Screenshots
+# Screenshot
 
-<table> <tr> <td><img src="assets/images/IMG_0503.PNG" width="300" /></td> <td><img src="assets/images/IMG_0504.PNG" width="300" /></td> </tr> </table>
+![News Explorer home page](src/assets/images/newsExplorer.webp)
 
 # Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/news-explorer.git
+git clone https://github.com/TaxiDriver802/newsExplorer.git
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd news-explorer
+cd newsexplorer
 ```
 
 Install dependencies:
