@@ -12,7 +12,7 @@ News Explorer is a web application that allows users to search for news articles
 
 4. View and manage saved articles
 
-### Responsive design for desktop and mobile
+5. Responsive design for desktop and mobile
 
 # Screenshots
 
